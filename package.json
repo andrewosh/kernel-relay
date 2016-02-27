@@ -30,6 +30,11 @@
     "url": "https://github.com/nteract/kernel-relay/issues"
   },
   "homepage": "https://github.com/nteract/kernel-relay#readme",
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
   "dependencies": {
     "chalk": "^1.1.1",
     "enchannel-zmq-backend": "^1.0.1",
