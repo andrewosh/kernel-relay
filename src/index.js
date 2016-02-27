@@ -1,8 +1,6 @@
 require('babel-register')({
-  presets: [
-    'es2015'
-  ]
-})
+  presets: [ 'es2015' ]
+});
 const app = require('express')();
 const http = require('http').Server(app);
 const uuid = require('node-uuid').v4;
