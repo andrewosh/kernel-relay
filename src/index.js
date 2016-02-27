@@ -1,3 +1,4 @@
+require('babel-register')
 const app = require('express')();
 const http = require('http').Server(app);
 const uuid = require('node-uuid').v4;

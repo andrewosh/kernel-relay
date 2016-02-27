@@ -36,6 +36,7 @@
     ]
   },
   "dependencies": {
+    "babel-register": "^6.5.2",
     "chalk": "^1.1.1",
     "enchannel-zmq-backend": "^1.0.1",
     "express": "^4.13.4",
