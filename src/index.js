@@ -1,5 +1,5 @@
 require('babel-register')({
-  presets: [ 'es2015' ]
+  presets: [ require('babel-preset-es2015') ]
 });
 const app = require('express')();
 const http = require('http').Server(app);
