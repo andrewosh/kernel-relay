@@ -17,7 +17,7 @@ function isChildMessage(msg) {
   return this.header.msg_id === msg.parent_header.msg_id;
 }
 
-app.get('/spawn/*', function(req, res) {
+app.get('/user/:id/spawn/*', function(req, res) {
   res.header('Access-Control-Allow-Origin', '*');
 
   const kernelName = req.url.split('/').slice(-1)[0];
@@ -84,7 +84,7 @@ app.get('/spawn/*', function(req, res) {
   });
 });
 
-app.get('/shutdown/*', function(req, res) {
+app.get('/user/:id/shutdown/*', function(req, res) {
   res.header('Access-Control-Allow-Origin', '*');
 
   const id = req.url.split('/').slice(-1)[0];
@@ -134,7 +134,7 @@ app.get('/shutdown/*', function(req, res) {
   kernelInfo.shell.next(shutDownRequest);
 });
 
-app.get('/list', function(req, res) {
+app.get('/user/:id/list', function(req, res) {
   res.header('Access-Control-Allow-Origin', 'localhost');
   res.send(JSON.stringify(Object.keys(kernels)));
 });
