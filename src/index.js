@@ -33,6 +33,7 @@ app.get('/spawn/*', function(req, res) {
     var disconnectSockets;
     const disconnectedSockets = new Promise(resolve => disconnectSockets = resolve);
 
+    console.log('crating new', kernelName, 'kernel with id', id)
     const kernelInfo = kernels[id] = {
       kernel,
       shell: enchannel.createShellSubject(id, kernel.config),
