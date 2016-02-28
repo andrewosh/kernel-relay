@@ -5,13 +5,15 @@ const app = require('express')();
 const http = require('http').Server(app);
 const uuid = require('node-uuid').v4;
 const spawnteract = require('spawnteract');
+const kernelspecs = require('kernelspecs');
 const enchannel = require('enchannel-zmq-backend');
 const fs = require('fs');
 const io = require('socket.io')(http);
 const logger = require('./logger');
-const kernels = {};
 const username = process.env.LOGNAME || process.env.USER ||
   process.env.LNAME || process.env.USERNAME;
+
+const kernels = {}
 
 function isChildMessage(msg) {
   return this.header.msg_id === msg.parent_header.msg_id;
@@ -138,6 +140,13 @@ app.get('/user/:id/list', function(req, res) {
   res.header('Access-Control-Allow-Origin', 'localhost');
   res.send(JSON.stringify(Object.keys(kernels)));
 });
+
+app.get('/user/:id/specs', function (req, res) {
+  res.header('Access-Control-Allow-Origin', 'localhost');
+  kernelspecs.findAll().then((kernels) => {
+    res.send(JSON.stringify(kernels))
+  });
+})
 
 exports.listen = function listen(port) {
   http.listen(port, () => logger.startServer(port));
