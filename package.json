@@ -41,6 +41,7 @@
     "enchannel-zmq-backend": "^1.0.1",
     "express": "^4.13.4",
     "kernelspecs": "^1.0.1",
+    "morgan": "^1.7.0",
     "node-uuid": "^1.4.7",
     "socket.io": "^1.4.5",
     "spawnteract": "^1.0.2"

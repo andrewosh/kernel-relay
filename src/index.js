@@ -2,6 +2,7 @@ require('babel-register')({
   presets: [ 'es2015' ]
 });
 const app = require('express')();
+const morgan = require('morgan')
 const http = require('http').Server(app);
 const uuid = require('node-uuid').v4;
 const spawnteract = require('spawnteract');
@@ -18,6 +19,8 @@ const kernels = {}
 function isChildMessage(msg) {
   return this.header.msg_id === msg.parent_header.msg_id;
 }
+
+app.use(morgan('combined'))
 
 app.get('/spawn/*', function(req, res) {
   res.header('Access-Control-Allow-Origin', '*');
